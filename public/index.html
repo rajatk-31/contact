@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Address Book</title>
+    <link rel='stylesheet prefetch' href='https://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css'>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body ng-app="addrBook" ng-controller="myCtrl">
+    <div class="container">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h3 class="text-center">Phone Book</h3>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group has-info has-feedback">
+                        <label for="seacrh" class="col-sm-2 control-label">Search: </label>
+                        <div class="col-sm-5">
+                            <input type="text" name="search" ng-model="test" class="form-control">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone Number</th>
+                                <th>Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in info | filter:test">
+                                <td><span ng-hide="showMe($index)">{{x.First_Name}}</span><input text="text" class="form-control input-sm" ng-model="x.First_Name" ng-show="showMe($index)" required/></td>
+                                <td><span ng-hide="showMe($index)">{{x.Last_Name}}</span><input text="text" class="form-control input-sm" ng-model="x.Last_Name" ng-show="showMe($index)" required /></td>
+                                <td><span ng-hide="showMe($index)">{{x.tel}}</span><input text="text" class="form-control input-sm" ng-model="x.tel" ng-show="showMe($index)" required /></td>
+                                <td><a href="#" ng-click="removeItem()"><span class="glyphicon glyphicon-trash"></span>&nbsp;</a>/
+                                    <a href="#" ng-click="change()" ng-hide="showMe($index)"> <span class="glyphicon glyphicon-edit"></span></a><a href="#" ng-click="save()" ng-show="showMe($index)">&nbsp;<span class="glyphicon glyphicon-ok"></span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <span>First Name：</span>
+                        <input type="text" class="form-control" ng-model="newFirstName">
+                    </div>
+                    <div class="form-group">
+                        <span>Last Name：</span>
+                        <input type="text" class="form-control" ng-model="newLastName">
+                    </div>
+
+                    <div class="form-group">
+                        <span>Tel：</span>
+                        <input type="text" class="form-control" ng-model="newTel">
+                    </div>
+                    <input type="button" class="btn btn-primary btn-sm" value="Add" ng-click="addItem()">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src='https://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js'></script>
+<script src="./js/app.js"></script>
+
+</html>
