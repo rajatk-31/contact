@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
- 
+
 var contactSchema = mongoose.Schema({
-    First_Name:{
+    First_Name: {
         type: String,
         required: true
     },
-    First_Name:{
+    Last_Name: {
         type: String,
         required: true
     },
-    tel:{
+    Tel: {
         type: Number,
         required: true
     }

@@ -37,12 +37,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="x in info | filter:test">
+                            <tr ng-repeat="x in contacts | filter:test">
                                 <td><span ng-hide="showMe($index)">{{x.First_Name}}</span><input text="text" class="form-control input-sm" ng-model="x.First_Name" ng-show="showMe($index)" required/></td>
                                 <td><span ng-hide="showMe($index)">{{x.Last_Name}}</span><input text="text" class="form-control input-sm" ng-model="x.Last_Name" ng-show="showMe($index)" required /></td>
-                                <td><span ng-hide="showMe($index)">{{x.tel}}</span><input text="text" class="form-control input-sm" ng-model="x.tel" ng-show="showMe($index)" required /></td>
-                                <td><a href="#" ng-click="removeItem()"><span class="glyphicon glyphicon-trash"></span>&nbsp;</a>/
-                                    <a href="#" ng-click="change()" ng-hide="showMe($index)"> <span class="glyphicon glyphicon-edit"></span></a><a href="#" ng-click="save()" ng-show="showMe($index)">&nbsp;<span class="glyphicon glyphicon-ok"></span></a></td>
+                                <td><span ng-hide="showMe($index)">{{x.Tel}}</span><input text="text" class="form-control input-sm" ng-model="x.tel" ng-show="showMe($index)" required /></td>
+                                <td><button ng-click="removeItem(x._id)"><span class="glyphicon glyphicon-trash"></span>&nbsp;</button>/
+                                    <button ng-click="change()" ng-hide="showMe($index)"> <span class="glyphicon glyphicon-edit"></span></a><a href="#" ng-click="save()" ng-show="showMe($index)">&nbsp;<span class="glyphicon glyphicon-ok"></span></button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -52,18 +52,18 @@
                 <form class="form-inline">
                     <div class="form-group">
                         <span>First Name：</span>
-                        <input type="text" class="form-control" ng-model="newFirstName">
+                        <input type="text" class="form-control" ng-model="contact.First_Name">
                     </div>
                     <div class="form-group">
                         <span>Last Name：</span>
-                        <input type="text" class="form-control" ng-model="newLastName">
+                        <input type="text" class="form-control" ng-model="contact.Last_Name">
                     </div>
 
                     <div class="form-group">
                         <span>Tel：</span>
-                        <input type="text" class="form-control" ng-model="newTel">
+                        <input type="text" class="form-control" ng-model="contact.Tel">
                     </div>
-                    <input type="button" class="btn btn-primary btn-sm" value="Add" ng-click="addItem()">
+                    <input type="button" class="btn btn-primary btn-sm" value="Add" ng-click="addItem(contact)">
                 </form>
             </div>
         </div>

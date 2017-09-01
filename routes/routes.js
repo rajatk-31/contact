@@ -3,21 +3,21 @@ var router = express.Router();
 var Contact = require('../models/contacts');
 
 //retreving contact
-router.get('/contacts', function (req, res, next) {
-    Contact.find(function (err, contacts) {
+router.get('/contacts', function(req, res, next) {
+    Contact.find({}, function(err, contacts) {
         res.json(contacts);
     })
 });
 
 //add contact
-router.post('/contact', function (req, res, nex) {
-    let newContact = new Contact({
+router.post('/contact', function(req, res, nex) {
+    var newContact = new Contact({
         First_Name: req.body.First_Name,
         Last_Name: req.body.Last_Name,
-        tel: req.body.tel
+        Tel: req.body.Tel
     })
 
-    newContact.save(function (err, contact) {
+    newContact.save(function(err, contact) {
         if (err) {
             res.json({
                 msg: 'Failed to add Contact!'
@@ -31,10 +31,10 @@ router.post('/contact', function (req, res, nex) {
 });
 
 //delete contact
-router.delete('/contact/:id', function (req, res, nex) {
+router.delete('/contact/:id', function(req, res) {
     Contact.remove({
         _id: req.params.id
-    }, function (err, result) {
+    }, function(err, result) {
         if (err) {
             res.json(err);
         } else {
